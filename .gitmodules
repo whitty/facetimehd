@@ -1,0 +1,3 @@
+[submodule "facetimehd-firmware"]
+	path = facetimehd-firmware
+	url = https://github.com/patjak/facetimehd-firmware
