@@ -1,6 +1,7 @@
 .debhelper/
 *.debhelper
 *.substvars
+*stamp
 *.log
 files
 
