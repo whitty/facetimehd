@@ -1,3 +1,9 @@
+facetimehd-dkms (0.5.7-2) unstable; urgency=medium
+
+  * Rebuild package format.
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Fri, 03 Mar 2023 21:12:05 +1100
+
 facetimehd-dkms (0.5.7-1) unstable; urgency=medium
 
   * Initial DKMS package.
