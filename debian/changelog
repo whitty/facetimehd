@@ -1,3 +1,9 @@
+facetimehd-dkms (0.5.18-1) unstable; urgency=medium
+
+  * Bump upstream version 0.5.18
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Sat, 04 Mar 2023 13:25:09 +1100
+
 facetimehd-dkms (0.5.7-2) unstable; urgency=medium
 
   * Rebuild package format.
