@@ -24,7 +24,7 @@ jobs:
       run:
         lsb_release -a && uname -a
     - name: Build
-      run: gbp buildpackage -us -uc --git-ignore-branch --git-upstream-tree=HEAD
+      run: dpkg-buildpackage -us -uc
     - name: Test install
       run: sudo dpkg -i ../facetimehd-dkms_*.deb ; cat /var/lib/dkms/facetimehd/*/build/make.log || true
     - name: Check install
