@@ -1,3 +1,9 @@
+facetimehd-dkms (0.6.8.1-1) unstable; urgency=medium
+
+  * Bump upstream version 0.6.8.1
+
+ -- Greg Whiteley <greg.whiteley@atomos.com>  Mon, 22 Apr 2024 19:53:26 +1000
+
 facetimehd-dkms (0.5.18-1) unstable; urgency=medium
 
   * Bump upstream version 0.5.18
