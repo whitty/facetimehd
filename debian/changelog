@@ -1,3 +1,9 @@
+facetimehd-dkms (0.6.8.2-2) unstable; urgency=medium
+
+  * Attach fthd_pci_remove() to pci driver shutdown hook
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Mon, 03 Mar 2025 21:28:55 +1100
+
 facetimehd-dkms (0.6.8.2-1) unstable; urgency=medium
 
   * Bump upstream version 0.6.8.2
