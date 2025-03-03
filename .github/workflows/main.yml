@@ -13,7 +13,6 @@ jobs:
           - ubuntu-20.04
           - ubuntu-22.04
           - ubuntu-24.04
-          - ubuntu-25.04
           - ubuntu-latest
 
     steps:
@@ -28,5 +27,30 @@ jobs:
       run: dpkg-buildpackage -us -uc
     - name: Test install
       run: sudo apt install ../facetimehd-dkms_*.deb ; cat /var/lib/dkms/facetimehd/*/build/*/make.log || true
+    - name: Check install
+      run: modinfo facetimehd
+
+  test:
+    name: Test build for ${{ matrix.image }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - ubuntu:25.04
+    container:
+      image: ${{ matrix.image }}
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Install dependencies
+      run: env apt-get install -y --no-install-recommends build-essential devscripts equivs
+    - name: Install deb dependencies
+      run: mk-build-deps && apt install -y --no-install-recommends ./facetimehd-dkms-build-deps*deb && git clean -xfd
+    - name: Build
+      run: dpkg-buildpackage -us -uc
+    - name: Test install
+      run: apt install ../facetimehd-dkms_*.deb ; cat /var/lib/dkms/facetimehd/*/build/*/make.log || true
     - name: Check install
       run: modinfo facetimehd
