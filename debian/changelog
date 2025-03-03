@@ -1,3 +1,9 @@
+facetimehd-dkms (0.6.8.2-3) unstable; urgency=medium
+
+  * Merge unmerged 6.13 fixes from PR-304 https://github.com/patjak/facetimehd/pull/304/commits
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Mon, 03 Mar 2025 21:35:24 +1100
+
 facetimehd-dkms (0.6.8.2-2) unstable; urgency=medium
 
   * Attach fthd_pci_remove() to pci driver shutdown hook
