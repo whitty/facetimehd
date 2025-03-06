@@ -20,13 +20,18 @@ jobs:
       with:
         submodules: recursive
     - name: Install dependencies
-      run: sudo apt-get install -y --no-install-recommends build-essential devscripts equivs
+      run: sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential devscripts equivs
     - name: Install deb dependencies
-      run: mk-build-deps && sudo apt install -y --no-install-recommends ./facetimehd-dkms-build-deps*deb && git clean -xfd
+      run: mk-build-deps && sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends ./facetimehd-dkms-build-deps*deb && git clean -xfd
     - name: Build
       run: dpkg-buildpackage -us -uc
+
     - name: Test install
-      run: sudo apt install ../facetimehd-dkms_*.deb ; cat /var/lib/dkms/facetimehd/*/build/*/make.log || true
+      run: |
+        sudo env DEBIAN_FRONTEND=noninteractive apt install ../facetimehd-dkms_*.deb
+        find /var/lib/dkms/facetimehd/ -name make.log -exec cat {} \; || true
+        dpkg -L facetimehd-dkms
+
     - name: Check install
       run: |
         modinfo facetimehd
