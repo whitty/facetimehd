@@ -1,3 +1,10 @@
+facetimehd-dkms (0.6.8.3-1) unstable; urgency=medium
+
+  * Bump upstream version 0.6.8.3
+  * Replace deprecated MODULES_CONF with installed modules.conf.d file
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Thu, 06 Mar 2025 21:06:38 +1100
+
 facetimehd-dkms (0.6.8.2-4) unstable; urgency=medium
 
   * Bump version with upstream merge of PR-304
@@ -6,7 +13,8 @@ facetimehd-dkms (0.6.8.2-4) unstable; urgency=medium
 
 facetimehd-dkms (0.6.8.2-3) unstable; urgency=medium
 
-  * Merge unmerged 6.13 fixes from PR-304 https://github.com/patjak/facetimehd/pull/304/commits
+  * Merge unmerged 6.13 fixes from PR-304
+    https://github.com/patjak/facetimehd/pull/304/commits
 
  -- Greg Whiteley <greg.whiteley@gmail.com>  Mon, 03 Mar 2025 21:35:24 +1100
 
