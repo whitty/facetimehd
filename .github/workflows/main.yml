@@ -10,7 +10,6 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-20.04
           - ubuntu-22.04
           - ubuntu-24.04
           - ubuntu-latest
@@ -43,9 +42,10 @@ jobs:
     strategy:
       matrix:
         os:
-          - 25.04
+          - '25.04'
+          - '20.04'
     container:
-      image: ghcr.io/whitty/gh_ubuntu_${{ matrix.os }}:feature-github_actions
+      image: ghcr.io/whitty/gh_ubuntu_${{ matrix.os }}:latest
 
     steps:
     - uses: actions/checkout@v4
