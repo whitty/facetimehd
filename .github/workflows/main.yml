@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - "24.10"
+          - '24.10'
     container:
       image: ghcr.io/whitty/gh_ubuntu_${{ matrix.os }}:latest
 
@@ -36,7 +36,7 @@ jobs:
         dpkg -L facetimehd-dkms
 
     - name: Install non-default prerequisites (dkms doesn't dep linux-headers in old versions)
-      if: ${{ contains(matrix.os, "20.") }}
+      if: ${{ startsWith(matrix.os, '20.') }}
       run: env DEBIAN_FRONTEND=noninteractive apt install -y linux-headers-generic
 
     - name: Check install
