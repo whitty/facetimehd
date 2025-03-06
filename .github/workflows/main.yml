@@ -28,4 +28,6 @@ jobs:
     - name: Test install
       run: sudo apt install ../facetimehd-dkms_*.deb ; cat /var/lib/dkms/facetimehd/*/build/*/make.log || true
     - name: Check install
-      run: modinfo facetimehd
+      run: |
+        modinfo facetimehd
+        grep bdc_pci /usr/lib/modprobe.d/blacklist-facetimehd-dkms.conf

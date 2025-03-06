@@ -7,6 +7,7 @@ include /usr/share/dpkg/pkg-info.mk
 
 override_dh_install:
 	dh_install Makefile *.[ch] usr/src/facetimehd-$(DEB_VERSION_UPSTREAM)/
+	dh_install debian/blacklist-facetimehd-dkms.conf usr/lib/modprobe.d/
 
 override_dh_dkms:
 	dh_dkms -V $(DEB_VERSION_UPSTREAM)
