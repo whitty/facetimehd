@@ -67,6 +67,10 @@ jobs:
         find /var/lib/dkms/facetimehd/ -name make.log -exec cat {} \; || true
         dpkg -L facetimehd-dkms
 
+    - name: Install non-default prerequisites (dkms doesn't dep linux-headers in old versions)
+      if: ${{ startsWith(matrix.os, '20.') }}
+      run: env DEBIAN_FRONTEND=noninteractive apt install -y linux-headers-generic
+
     - name: Check install
       run: |
         # Can't use native modinfo due to underlying OS not matching container OS
