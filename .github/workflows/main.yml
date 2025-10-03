@@ -45,6 +45,6 @@ jobs:
         ver=$(echo /lib/modules/*/updates/dkms | sort -nr | head -n 1 | sed -e 's:/lib/modules/::' -e 's:/updates/dkms.*::')
         ls -la /lib/modules/${ver}/updates/dkms || true
         ls /lib/modules/${ver}/updates/dkms/facetimehd.ko || true
-        modinfo -k ${ver} facetimehd
+        modinfo -k ${ver} facetimehd || modinfo -k ${ver} /lib/modules/${ver}/updates/dkms/facetimehd.ko
         ls -latr /usr/lib/modprobe.d/
         grep bdc_pci /usr/lib/modprobe.d/blacklist-facetimehd-dkms.conf
