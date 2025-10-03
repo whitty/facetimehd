@@ -42,7 +42,7 @@ jobs:
       matrix:
         os:
           - '25.04'
-          - '24.10'
+          - '25.10'
           - '20.04'
     container:
       image: ghcr.io/whitty/gh_ubuntu_${{ matrix.os }}:latest
