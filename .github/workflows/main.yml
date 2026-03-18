@@ -12,6 +12,7 @@ jobs:
         os:
           - ubuntu-22.04
           - ubuntu-24.04
+          # - ubuntu-26.04 # github doesn't yet support
 
     steps:
     - uses: actions/checkout@v4
@@ -43,6 +44,7 @@ jobs:
         os:
           - '25.04'
           - '25.10'
+          - '26.04' # remove in favour of github image
           - '20.04'
     container:
       image: ghcr.io/whitty/gh_ubuntu_${{ matrix.os }}:latest
