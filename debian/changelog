@@ -1,3 +1,9 @@
+facetimehd-dkms (0.6.13-2) unstable; urgency=medium
+
+  * Bump upstream to support kernels >= 7.0
+
+ -- Greg Whiteley <greg.whiteley@gmail.com>  Thu, 19 Mar 2026 08:17:55 +1100
+
 facetimehd-dkms (0.6.13-1) unstable; urgency=medium
 
   * Bump upstream version 0.6.13.0
