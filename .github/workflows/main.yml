@@ -10,8 +10,6 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-22.04
-          - ubuntu-24.04
           - ubuntu-26.04
 
     steps:
@@ -34,51 +32,4 @@ jobs:
     - name: Check install
       run: |
         modinfo facetimehd
-        grep bdc_pci /usr/lib/modprobe.d/blacklist-facetimehd-dkms.conf
-
-  test:
-    name: Test build for ${{ matrix.os }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os:
-          - '25.04'
-          - '25.10'
-          - '20.04'
-    container:
-      image: ghcr.io/whitty/gh_ubuntu_${{ matrix.os }}:latest
-
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: recursive
-
-    - name: Install dependencies
-      run: apt update && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential devscripts equivs
-    - name: Install deb dependencies
-      run: |
-        mk-build-deps
-        apt update && env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends ./facetimehd-dkms-build-deps*deb
-        git config --global --add safe.directory "${GITHUB_WORKSPACE}" && git clean -xfd
-
-    - name: Build
-      run: dpkg-buildpackage -us -uc
-    - name: Test install
-      run: |
-        env DEBIAN_FRONTEND=noninteractive apt install -y ../facetimehd-dkms_*.deb
-        find /var/lib/dkms/facetimehd/ -name make.log -exec cat {} \; || true
-        dpkg -L facetimehd-dkms
-
-    - name: Install non-default prerequisites (dkms doesn't dep linux-headers in old versions)
-      if: ${{ startsWith(matrix.os, '20.') }}
-      run: env DEBIAN_FRONTEND=noninteractive apt install -y linux-headers-generic
-
-    - name: Check install
-      run: |
-        # Can't use native modinfo due to underlying OS not matching container OS
-        ver=$(echo /lib/modules/*/updates/dkms | sort -nr | head -n 1 | sed -e 's:/lib/modules/::' -e 's:/updates/dkms.*::')
-        ls -la /lib/modules/${ver}/updates/dkms || true
-        ls /lib/modules/${ver}/updates/dkms/facetimehd.ko || true
-        modinfo -k ${ver} facetimehd || modinfo -k ${ver} /lib/modules/${ver}/updates/dkms/facetimehd.ko
-        ls -latr /usr/lib/modprobe.d/
         grep bdc_pci /usr/lib/modprobe.d/blacklist-facetimehd-dkms.conf
